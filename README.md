@@ -30,6 +30,26 @@ Becomes:
 // =======================
 ```
 
+or
+
+```js
+// #######################
+// # Initialize database #
+// # Run migrations      #
+// #######################
+```
+
+or
+
+```js
+// @@@@@@@@@@@@@@@@@@@@@@@
+// @ Initialize database @
+// @ Run migrations      @
+// @@@@@@@@@@@@@@@@@@@@@@@
+```
+
+or with whatever symbol you want!
+
 > Supports `//` and `#` comments. More coming soon.
 
 ---
