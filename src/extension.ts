@@ -7,7 +7,8 @@ const generateCommentText = (
   commentSymbol = "//",
   boxSymbol = "=",
   boxWidth = 0,
-  size = "normal"
+  size = "normal",
+  colourDecorator = ""
 ) => {
   var lines = text.split("\n");
   lines = lines.map((line) =>
@@ -21,7 +22,7 @@ const generateCommentText = (
   }
 
   if (size === "big") {
-    lines = ["", ...lines.map((line) => `  ${line}  `), ""];
+    lines = ["", ...lines.map((line) => `    ${line}    `), ""];
   }
 
   const maxLineLength = lines.reduce(
@@ -34,13 +35,14 @@ const generateCommentText = (
     boxWidth = maxLineLength + 4;
   }
 
-  const border = commentSymbol + " " + boxSymbol.repeat(boxWidth);
+  const border =
+    commentSymbol + colourDecorator + " " + boxSymbol.repeat(boxWidth);
 
   const box = [
     border,
     ...lines.map(
       (line) =>
-        `${commentSymbol} ${boxSymbol} ${line.padEnd(
+        `${commentSymbol}${colourDecorator} ${boxSymbol} ${line.padEnd(
           maxLineLength
         )} ${boxSymbol}`
     ),
@@ -115,8 +117,17 @@ export function activate(context: vscode.ExtensionContext) {
       "bigcomments.customcommentbox",
       async () => {
         const userResponse = await vscode.window.showInputBox({
-          placeHolder: "Enter your desired Box Symbol (e.g. '='): ",
+          placeHolder:
+            "Enter your desired Box Symbol and (optional) colour decorator (e.g. '=*'): ",
         });
+
+        var colourDecorator;
+
+        if (userResponse && userResponse?.length > 1) {
+          colourDecorator = userResponse.charAt(1);
+        } else {
+          colourDecorator = "";
+        }
 
         const editor = vscode.window.activeTextEditor;
         if (!editor) {
@@ -128,7 +139,14 @@ export function activate(context: vscode.ExtensionContext) {
         const commentSymbol =
           editor.document.languageId === "python" ? "#" : "//";
 
-        const box = generateCommentText(text, commentSymbol, userResponse)!;
+        const box = generateCommentText(
+          text,
+          commentSymbol,
+          userResponse?.charAt(0),
+          0,
+          "normal",
+          colourDecorator
+        )!;
 
         editor.edit((editBuilder) => {
           editBuilder.replace(selected, box);
@@ -146,8 +164,16 @@ export function activate(context: vscode.ExtensionContext) {
       "bigcomments.bigcustomcommentbox",
       async () => {
         const userResponse = await vscode.window.showInputBox({
-          placeHolder: "Enter your desired Box Symbol (e.g. '='): ",
+          placeHolder:
+            "Enter your desired Box Symbol and (optional) colour decorator (e.g. '=*'): ",
         });
+        var colourDecorator;
+
+        if (userResponse && userResponse?.length > 1) {
+          colourDecorator = userResponse.charAt(1);
+        } else {
+          colourDecorator = "";
+        }
 
         const editor = vscode.window.activeTextEditor;
         if (!editor) {
@@ -162,9 +188,10 @@ export function activate(context: vscode.ExtensionContext) {
         const box = generateCommentText(
           text,
           commentSymbol,
-          userResponse,
+          userResponse?.charAt(0),
           0,
-          "big"
+          "big",
+          colourDecorator
         )!;
 
         editor.edit((editBuilder) => {

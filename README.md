@@ -9,7 +9,7 @@ I made this to solve my frustration with not being able to easily create clear a
 
 - ✅ Wrap selected text in a **boxed comment block**
 - 🧠 **Auto-detects comment style** (`//`, `#`)
-- 💬 **Custom symbols** for borders (e.g. `=`, `#`, `@`)
+- 💬 **Custom symbols + decorators** (e.g. `=*`, `#*`, `-$`) for use with comment colouring extensions
 - 📏 **Auto-resizes box** to fit the widest line
 - ♻️ **Strips existing comment symbols** before re-boxing
 - 🧱 **"Big Box" mode**: adds extra spacing and padding
@@ -29,7 +29,7 @@ Initialize database
 Run migrations
 ```
 
-Output:
+Output (default):
 
 ```js
 // =======================
@@ -38,16 +38,25 @@ Output:
 // =======================
 ```
 
-### Custom box symbol (`@`)
+### Custom input `=*` (decorator)
 
 ```js
-// @@@@@@@@@@@@@@@@@@@@@@@
-// @ Initialize database @
-// @ Run migrations      @
-// @@@@@@@@@@@@@@@@@@@@@@@
+//* =======================
+//* = Initialize database =
+//* = Run migrations      =
+//* =======================
 ```
 
-### Big Box mode (adds blank lines and padding)
+### Custom input `@$` (symbol + styled comment prefix)
+
+```js
+//$ @@@@@@@@@@@@@@@@@@@@@@@
+//$ @ Initialize database @
+//$ @ Run migrations      @
+//$ @@@@@@@@@@@@@@@@@@@@@@@
+```
+
+### Big Box mode
 
 ```js
 // ==============================
@@ -68,12 +77,33 @@ Output:
 
 ### 🧾 Available Commands
 
-| Command ID                         | Description                          |
-| ---------------------------------- | ------------------------------------ |
-| `Bigcomments: Default Comment Box` | Box around selected text using `=`   |
-| `Bigcomments: Custom Comment Box`  | Ask for a symbol (like `#` or `@`)   |
-| `Bigcomments: Big Custom Box`      | Extra padding, more visual space     |
-| `Bigcomments: Inline Comment Box`  | Box around the **current line only** |
+| Command ID                         | Description                                                  |
+| ---------------------------------- | ------------------------------------------------------------ |
+| `Bigcomments: Default Comment Box` | Box around selected text using `=`                           |
+| `Bigcomments: Custom Comment Box`  | Prompt for box symbol + optional decorator (e.g. `=*`, `-$`) |
+| `Bigcomments: Big Custom Box`      | Adds vertical padding to create more visual space            |
+| `Bigcomments: Inline Comment Box`  | Box the **current line** under cursor                        |
+
+---
+
+## 💡 Custom Symbol Input Format
+
+When prompted:
+
+```
+Enter your desired Box Symbol and (optional) colour decorator (e.g. '=*'):
+```
+
+- The **first character** is used as the **box symbol** (e.g. `=`)
+- Any following characters are used as **decorator(s)** added to the comment symbol (e.g. `//*`, `//$`, `##!`)
+
+Example:
+
+| Input | Box Symbol | Comment Prefix |
+| ----- | ---------- | -------------- |
+| `=*`  | `=`        | `//*`          |
+| `#$`  | `#`        | `//$`          |
+| `@`   | `@`        | `//@`          |
 
 ---
 
@@ -100,20 +130,31 @@ You can add custom keybindings in your own VS Code keybindings:
 
 ## 📌 Extension Settings
 
-None (yet). All features are accessed via commands.
-Planned: presets, width control, multi-language comment support.
+Currently no settings. All behavior is controlled via commands.
+
+Future ideas:
+
+- Presets
+- Per-language comment style overrides
+- Persistent default box character
 
 ---
 
 ## 🐞 Known Issues
 
 - Only supports `//` and `#` comment styles
-- No toggle/unbox support (yet)
-- Doesn't auto-detect box symbol in existing blocks
+- No unbox/toggle feature yet
+- No global settings (e.g. default symbol or decorator)
 
 ---
 
 ## 📦 Release Notes
+
+### 0.0.3
+
+- 🔡 Improved custom box prompt: now accepts `symbol + decorator` input (`=*`)
+- ✨ Decorators are applied to the comment symbol (`//*`, `//#`, etc.)
+- 🔄 Small refactor for inline mode, edge cases
 
 ### 0.0.2
 
@@ -132,11 +173,11 @@ Planned: presets, width control, multi-language comment support.
 
 ## 🧪 Future Ideas
 
-- Multi-language support (C-style, XML, Markdown)
-- Presets and themes for comment styles
+- Multi-language support (e.g., `/* */`, `<!-- -->`)
 - Toggle/unbox existing comment blocks
-- Header comments with emojis or banners
+- Comment style presets
+- ASCII banners or emoji box styles
 
 ---
 
-**Enjoy readable, beautiful comments again!**
+**Make your comments readable again.** 💬✨

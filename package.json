@@ -3,7 +3,7 @@
   "displayName": "BigComments",
   "description": "Create large decorative and auto-resizing comments for readability",
   "publisher": "Jasper Chong",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "repository": {
     "url": "https://github.com/jasperchongcode/bigcomments"
   },
