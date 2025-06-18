@@ -25,8 +25,8 @@ Becomes:
 
 ```js
 // ===============================
-// = Initialize database        =
-// = Run migrations             =
+// = Initialize database         =
+// = Run migrations              =
 // ===============================
 ```
 
