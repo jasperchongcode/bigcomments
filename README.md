@@ -24,10 +24,10 @@ Run migrations
 Becomes:
 
 ```js
-// ===============================
-// = Initialize database         =
-// = Run migrations              =
-// ===============================
+// =======================
+// = Initialize database =
+// = Run migrations      =
+// =======================
 ```
 
 > Supports `//` and `#` comments. More coming soon.
