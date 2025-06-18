@@ -1,71 +1,86 @@
-# bigcomments README
+# 🧱 bigcomments
 
-This is the README for your extension "bigcomments". After writing up a brief description, we recommend including the following sections.
-
-## Features
-
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+`bigcomments` is a Visual Studio Code extension that helps you format **large, padded comment blocks** around selected text. Ideal for making headers, dividers, or attention-grabbing notes in your code.
 
 ---
 
-## Following extension guidelines
+## ✨ Features
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+- Wraps selected text in a **boxed comment** using symbols like `=`, `-`, or `*`
+- Detects the language’s comment style (`//` or `#`)
+- Supports **custom box symbols** via input
+- Auto-adjusts width to match the longest line
+- Removes existing comment prefixes in selection (smart re-boxing)
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+### Example (JavaScript)
 
-## Working with Markdown
+Selected text:
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+```js
+Initialize database
+Run migrations
+```
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+Becomes:
 
-## For more information
+```js
+// ===============================
+// = Initialize database        =
+// = Run migrations             =
+// ===============================
+```
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+> Supports `//` and `#` comments. More coming soon.
 
-**Enjoy!**
+---
+
+## 🧪 Usage
+
+1. **Select** the text you want to wrap
+2. Press `Cmd+Shift+P` / `Ctrl+Shift+P`
+3. Run:
+
+   - `Bigcomments: Default Comment Box` — uses `=` as the box symbol
+   - `Bigcomments: Custom Comment Box` — lets you pick a symbol
+
+---
+
+## ⚙️ Extension Settings
+
+Currently, there are no user-configurable settings — just commands.
+Settings support is planned in future versions.
+
+---
+
+## 🛠 Requirements
+
+- Visual Studio Code version **1.85.0 or later**
+- No external dependencies
+
+---
+
+## 🐞 Known Issues
+
+- Only supports `//` and `#` comment styles (JavaScript, Python, etc.)
+- Does not yet auto-unbox or support multi-language configs
+
+---
+
+## 📦 Release Notes
+
+### 0.0.1
+
+- Initial release
+- Default + custom comment boxes
+- Language-aware comment detection
+
+---
+
+## 📚 For More Info
+
+- [VS Code Extension Docs](https://code.visualstudio.com/api)
+- [Markdown Cheatsheet](https://www.markdownguide.org/cheat-sheet/)
+
+---
+
+Made with 💬 and `vscode` API by [Jasper Chong](https://jasperchong.com)
