@@ -3,7 +3,10 @@
   "displayName": "BigComments",
   "description": "Create large decorative and auto-resizing comments for readability",
   "publisher": "Jasper Chong",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "repository": {
+    "url": "https://github.com/jasperchongcode/bigcomments"
+  },
   "engines": {
     "vscode": "^1.101.0"
   },
@@ -16,7 +19,9 @@
     "commands": [
       {"command": "bigcomments.defaultcommentbox",
     "title":"Default Comment Box"},
-    {"command": "bigcomments.customcommentbox", "title":"Custom Comment Box"}
+    {"command": "bigcomments.customcommentbox", "title":"Custom Comment Box"},
+    {"command": "bigcomments.defaultcommentboxinline", "title":"Default Comment Box inline"},
+    {"command":"bigcomments.bigcustomcommentbox", "title":"Big Custom Comment Box"}
     ]
   },
   "scripts": {

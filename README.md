@@ -1,27 +1,35 @@
 # 🧱 bigcomments
 
-`bigcomments` is a Visual Studio Code extension that helps you format **large, padded comment blocks** around selected text. Ideal for making headers, dividers, or attention-grabbing notes in your code. This was made to fix an issue I had with not being able to easily make clearly readable "header comments".
+`bigcomments` is a Visual Studio Code extension that helps you format **large, padded comment blocks** around selected text. It's great for making headers, section dividers, or attention-grabbing notes in your code.  
+I made this to solve my frustration with not being able to easily create clear and consistent "header comments."
 
 ---
 
 ## ✨ Features
 
-- Wraps selected text in a **boxed comment** using symbols like `=`, `-`, or `*`
-- Detects the language’s comment style (`//` or `#`)
-- Supports **custom box symbols** via input
-- Auto-adjusts width to match the longest line
-- Removes existing comment prefixes in selection (smart re-boxing)
+- ✅ Wrap selected text in a **boxed comment block**
+- 🧠 **Auto-detects comment style** (`//`, `#`)
+- 💬 **Custom symbols** for borders (e.g. `=`, `#`, `@`)
+- 📏 **Auto-resizes box** to fit the widest line
+- ♻️ **Strips existing comment symbols** before re-boxing
+- 🧱 **"Big Box" mode**: adds extra spacing and padding
+- 📍 **Inline mode**: turn a single line into a full-width comment
+- ⚡ Fast, keyboard-first UX
 
-### Example (JavaScript)
+---
 
-Selected text:
+## 🔍 Examples
+
+### Multi-line comment (default mode)
+
+Input:
 
 ```js
 Initialize database
 Run migrations
 ```
 
-Becomes:
+Output:
 
 ```js
 // =======================
@@ -30,16 +38,7 @@ Becomes:
 // =======================
 ```
 
-or
-
-```js
-// #######################
-// # Initialize database #
-// # Run migrations      #
-// #######################
-```
-
-or
+### Custom box symbol (`@`)
 
 ```js
 // @@@@@@@@@@@@@@@@@@@@@@@
@@ -48,50 +47,96 @@ or
 // @@@@@@@@@@@@@@@@@@@@@@@
 ```
 
-or with whatever symbol you want!
+### Big Box mode (adds blank lines and padding)
 
-> Supports `//` and `#` comments. More coming soon.
+```js
+// ==============================
+// =                           =
+// =   Initialize database     =
+// =   Run migrations          =
+// =                           =
+// ==============================
+```
 
 ---
 
-## 🧪 Usage
+## ⚙️ Usage
 
 1. **Select** the text you want to wrap
-2. Press `Cmd+Shift+P` / `Ctrl+Shift+P`
-3. Run:
+2. Open the **Command Palette**: `Cmd+Shift+P` / `Ctrl+Shift+P`
+3. Run one of the following commands:
 
-   - `Bigcomments: Default Comment Box` — uses `=` as the box symbol
-   - `Bigcomments: Custom Comment Box` — lets you pick a symbol
+### 🧾 Available Commands
 
-Optional: Assign the command to a keybind for quick use
+| Command ID                         | Description                          |
+| ---------------------------------- | ------------------------------------ |
+| `Bigcomments: Default Comment Box` | Box around selected text using `=`   |
+| `Bigcomments: Custom Comment Box`  | Ask for a symbol (like `#` or `@`)   |
+| `Bigcomments: Big Custom Box`      | Extra padding, more visual space     |
+| `Bigcomments: Inline Comment Box`  | Box around the **current line only** |
 
 ---
 
-## ⚙️ Extension Settings
+## 🎹 Keybinding (Optional)
 
-Currently, there are no user-configurable settings — just commands.
-Settings support is planned in future versions.
+You can add custom keybindings in your own VS Code keybindings:
+
+```json
+{
+  "key": "cmd+alt+b",
+  "command": "bigcomments.defaultcommentbox",
+  "when": "editorTextFocus"
+}
+```
 
 ---
 
 ## 🛠 Requirements
 
-- Visual Studio Code version **1.85.0 or later**
+- VS Code **1.85.0 or later**
 - No external dependencies
+
+---
+
+## 📌 Extension Settings
+
+None (yet). All features are accessed via commands.
+Planned: presets, width control, multi-language comment support.
 
 ---
 
 ## 🐞 Known Issues
 
-- Only supports `//` and `#` comment styles (JavaScript, Python, etc.)
-- Does not yet auto-unbox or support multi-language configs
+- Only supports `//` and `#` comment styles
+- No toggle/unbox support (yet)
+- Doesn't auto-detect box symbol in existing blocks
 
 ---
 
 ## 📦 Release Notes
 
+### 0.0.2
+
+- ➕ Added **inline mode**
+- ➕ Added **big box mode** with padded layout
+- 🧠 Smarter re-parsing of existing comments
+- ✍️ Improved default box sizing logic
+
 ### 0.0.1
 
 - Initial release
 - Default + custom comment boxes
-- Language-aware comment detection
+- Auto language detection (`//` vs `#`)
+
+---
+
+## 🧪 Future Ideas
+
+- Multi-language support (C-style, XML, Markdown)
+- Presets and themes for comment styles
+- Toggle/unbox existing comment blocks
+- Header comments with emojis or banners
+
+---
+
+**Enjoy readable, beautiful comments again!**
