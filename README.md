@@ -43,6 +43,8 @@ Becomes:
    - `Bigcomments: Default Comment Box` — uses `=` as the box symbol
    - `Bigcomments: Custom Comment Box` — lets you pick a symbol
 
+Optional: Assign the command to a keybind for quick use
+
 ---
 
 ## ⚙️ Extension Settings

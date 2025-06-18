@@ -2,7 +2,6 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
 
-//todo this needs to parse to see if it starts with a comment or not
 const generateCommentText = (
   text = "",
   commentSymbol = "//",
