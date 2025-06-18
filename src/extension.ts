@@ -12,7 +12,7 @@ const generateCommentText = (
   var lines = text.split("\n");
   lines = lines.map((line) =>
     line.startsWith(commentSymbol)
-      ? line.slice(1).trimStart()
+      ? line.slice(commentSymbol.length).trimStart()
       : line.trimStart()
   );
 
