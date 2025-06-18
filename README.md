@@ -1,6 +1,6 @@
 # 🧱 bigcomments
 
-`bigcomments` is a Visual Studio Code extension that helps you format **large, padded comment blocks** around selected text. Ideal for making headers, dividers, or attention-grabbing notes in your code.
+`bigcomments` is a Visual Studio Code extension that helps you format **large, padded comment blocks** around selected text. Ideal for making headers, dividers, or attention-grabbing notes in your code. This was made to fix an issue I had with not being able to easily make clearly readable "header comments".
 
 ---
 
