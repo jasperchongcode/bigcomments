@@ -3,7 +3,7 @@
   "displayName": "Big Comments",
   "description": "Create large decorative and auto-resizing comments for readability",
   "publisher": "jasperchongcode",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "icon": "icon.png",
   "repository": {
     "url": "https://github.com/jasperchongcode/bigcomments"
@@ -18,25 +18,25 @@
   ],
   "activationEvents": [],
   "main": "./out/extension.js",
-    "contributes": {
-      "commands": [
-        {
-          "command": "bigcomments.defaultcommentbox",
-          "title": "BigComments: Default Comment Box"
-        },
-        {
-          "command": "bigcomments.customcommentbox",
-          "title": "BigComments: Custom Comment Box"
-        },
-        {
-          "command": "bigcomments.defaultcommentboxinline",
-          "title": "BigComments: Inline Default Comment Box"
-        },
-        {
-          "command": "bigcomments.bigcustomcommentbox",
-          "title": "BigComments: Big Custom Box"
-        }
-      ]
+  "contributes": {
+    "commands": [
+      {
+        "command": "bigcomments.defaultcommentbox",
+        "title": "BigComments: Default Comment Box"
+      },
+      {
+        "command": "bigcomments.customcommentbox",
+        "title": "BigComments: Custom Comment Box"
+      },
+      {
+        "command": "bigcomments.defaultcommentboxinline",
+        "title": "BigComments: Inline Default Comment Box"
+      },
+      {
+        "command": "bigcomments.bigcustomcommentbox",
+        "title": "BigComments: Big Custom Box"
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
