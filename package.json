@@ -36,7 +36,16 @@
         "command": "bigcomments.bigcustomcommentbox",
         "title": "BigComments: Big Custom Box"
       }
-    ]
+    ],
+    "properties": {
+      
+      "bigcomments.defaultSymbol": {
+        "type": "string",
+        "default": "=",
+        "description": "Default box symbol used when wrapping text."
+      }
+      
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

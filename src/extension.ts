@@ -2,20 +2,81 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
 
+const config = vscode.workspace.getConfiguration("bigcomments");
+const defaultSymbol = config.get<string>("defaultSymbol", "=");
+
+const getCommentSymbol = (languageId = "") => {
+  switch (languageId) {
+    // Languages with single-line comments
+    case "javascript":
+    case "typescript":
+    case "java":
+    case "c":
+    case "cpp":
+    case "csharp":
+    case "go":
+    case "rust":
+    case "scala":
+    case "kotlin":
+      return ["//"];
+
+    case "python":
+    case "r":
+    case "perl":
+    case "makefile":
+    case "shellscript":
+    case "ruby":
+    case "dockerfile":
+      return ["#"];
+
+    case "sql":
+    case "plsql":
+      return ["--"];
+
+    // Languages with block comments
+    case "html":
+    case "xml":
+      return ["<!--", "-->"];
+
+    case "css":
+    case "scss":
+    case "less":
+      return ["/*", "*/"];
+
+    case "lua":
+      return ["--[[", "]]"];
+
+    default:
+      return ["//"]; // fallback to single-line
+  }
+};
+
 const generateCommentText = (
   text = "",
-  commentSymbol = "//",
-  boxSymbol = "=",
+  commentSymbol = ["//"], // either 1 or 2
+  boxSymbol = defaultSymbol,
   boxWidth = 0,
   size = "normal",
   colourDecorator = ""
 ) => {
   var lines = text.split("\n");
-  lines = lines.map((line) =>
-    line.startsWith(commentSymbol)
-      ? line.slice(commentSymbol.length).trimStart()
-      : line.trimStart()
-  );
+
+  if (commentSymbol.length === 2) {
+    // If a multiline comment, remove all instances of the comment symbol and strip lines
+    lines = lines.map((line) =>
+      line
+        .replaceAll(commentSymbol[0], "")
+        .replaceAll(commentSymbol[1], "")
+        .trim()
+    );
+  } else {
+    // otherwise only remove comment symbols at the start
+    lines = lines.map((line) =>
+      line.trim().startsWith(commentSymbol[0])
+        ? line.slice(commentSymbol.length).trim()
+        : line.trim()
+    );
+  }
 
   if (!lines) {
     return;
@@ -35,18 +96,29 @@ const generateCommentText = (
     boxWidth = maxLineLength + 4;
   }
 
+  // only add the comment symbol to the start if it is a single comment symbol
   const border =
-    commentSymbol + colourDecorator + " " + boxSymbol.repeat(boxWidth);
+    (commentSymbol.length !== 2 ? commentSymbol : "") +
+    colourDecorator +
+    " " +
+    boxSymbol.repeat(boxWidth);
 
-  const box = [
-    border,
+  // construct the comment box, adding in the multiline comments if required
+  var box = [
+    (commentSymbol.length === 2 ? commentSymbol[0] : "") + border,
     ...lines.map(
       (line) =>
-        `${commentSymbol}${colourDecorator} ${boxSymbol} ${line.padEnd(
+        `${
+          commentSymbol.length !== 2
+            ? commentSymbol
+            : " ".repeat(commentSymbol[0].length)
+        }${colourDecorator} ${boxSymbol} ${line.padEnd(
           maxLineLength
         )} ${boxSymbol}`
     ),
-    border,
+    (commentSymbol.length === 2 && " ".repeat(commentSymbol[0].length)) +
+      border +
+      (commentSymbol.length === 2 ? commentSymbol[1] : ""),
   ].join("\n");
 
   return box;
@@ -70,8 +142,7 @@ export function activate(context: vscode.ExtensionContext) {
 
         const selected = editor.selection;
         const text = editor.document.lineAt(selected.active).text;
-        const commentSymbol =
-          editor.document.languageId === "python" ? "#" : "//";
+        const commentSymbol = getCommentSymbol(editor.document.languageId);
 
         const box = generateCommentText(text, commentSymbol)!;
 
@@ -97,8 +168,7 @@ export function activate(context: vscode.ExtensionContext) {
 
       const selected = editor.selection;
       const text = editor.document.getText(selected);
-      const commentSymbol =
-        editor.document.languageId === "python" ? "#" : "//";
+      const commentSymbol = getCommentSymbol(editor.document.languageId);
 
       const box = generateCommentText(text, commentSymbol)!;
 
@@ -136,8 +206,7 @@ export function activate(context: vscode.ExtensionContext) {
 
         const selected = editor.selection;
         const text = editor.document.getText(selected);
-        const commentSymbol =
-          editor.document.languageId === "python" ? "#" : "//";
+        const commentSymbol = getCommentSymbol(editor.document.languageId);
 
         const box = generateCommentText(
           text,
@@ -182,8 +251,7 @@ export function activate(context: vscode.ExtensionContext) {
 
         const selected = editor.selection;
         const text = editor.document.getText(selected);
-        const commentSymbol =
-          editor.document.languageId === "python" ? "#" : "//";
+        const commentSymbol = getCommentSymbol(editor.document.languageId);
 
         const box = generateCommentText(
           text,
