@@ -4,6 +4,7 @@
   "description": "Create large decorative and auto-resizing comments for readability",
   "publisher": "jasperchongcode",
   "version": "0.0.4",
+  "icon": "icon.png",
   "repository": {
     "url": "https://github.com/jasperchongcode/bigcomments"
   },
@@ -17,7 +18,6 @@
   ],
   "activationEvents": [],
   "main": "./out/extension.js",
-  "contributes": {
     "contributes": {
       "commands": [
         {
@@ -37,7 +37,6 @@
           "title": "BigComments: Big Custom Box"
         }
       ]
-    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
