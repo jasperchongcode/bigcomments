@@ -3,7 +3,7 @@
   "displayName": "Big Comments",
   "description": "Create large decorative and auto-resizing comments for readability",
   "publisher": "jasperchongcode",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "icon": "icon.png",
   "repository": {
     "url": "https://github.com/jasperchongcode/bigcomments"
@@ -38,13 +38,11 @@
       }
     ],
     "properties": {
-      
       "bigcomments.defaultSymbol": {
         "type": "string",
         "default": "=",
         "description": "Default box symbol used when wrapping text."
       }
-      
     }
   },
   "scripts": {
