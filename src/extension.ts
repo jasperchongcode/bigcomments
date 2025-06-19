@@ -124,7 +124,7 @@ export function activate(context: vscode.ExtensionContext) {
         var colourDecorator;
 
         if (userResponse && userResponse?.length > 1) {
-          colourDecorator = userResponse.charAt(1);
+          colourDecorator = userResponse.slice(1);
         } else {
           colourDecorator = "";
         }
@@ -170,7 +170,7 @@ export function activate(context: vscode.ExtensionContext) {
         var colourDecorator;
 
         if (userResponse && userResponse?.length > 1) {
-          colourDecorator = userResponse.charAt(1);
+          colourDecorator = userResponse.slice(1);
         } else {
           colourDecorator = "";
         }
