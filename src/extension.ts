@@ -116,7 +116,7 @@ const generateCommentText = (
           maxLineLength
         )} ${boxSymbol}`
     ),
-    (commentSymbol.length === 2 && " ".repeat(commentSymbol[0].length)) +
+    (commentSymbol.length === 2 ? " ".repeat(commentSymbol[0].length) : "") +
       border +
       (commentSymbol.length === 2 ? commentSymbol[1] : ""),
   ].join("\n");
