@@ -3,7 +3,7 @@
   "displayName": "Big Comments",
   "description": "Create large decorative and auto-resizing comments for readability",
   "publisher": "jasperchongcode",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "repository": {
     "url": "https://github.com/jasperchongcode/bigcomments"
   },
@@ -11,32 +11,33 @@
     "vscode": "^1.101.0"
   },
   "categories": [
-    "Other", "Extension Packs", "Formatters"
+    "Other",
+    "Extension Packs",
+    "Formatters"
   ],
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
     "contributes": {
-  "commands": [
-    {
-      "command": "bigcomments.defaultcommentbox",
-      "title": "BigComments: Default Comment Box"
-    },
-    {
-      "command": "bigcomments.customcommentbox",
-      "title": "BigComments: Custom Comment Box"
-    },
-    {
-      "command": "bigcomments.defaultcommentboxinline",
-      "title": "BigComments: Inline Default Comment Box"
-    },
-    {
-      "command": "bigcomments.bigcustomcommentbox",
-      "title": "BigComments: Big Custom Box"
+      "commands": [
+        {
+          "command": "bigcomments.defaultcommentbox",
+          "title": "BigComments: Default Comment Box"
+        },
+        {
+          "command": "bigcomments.customcommentbox",
+          "title": "BigComments: Custom Comment Box"
+        },
+        {
+          "command": "bigcomments.defaultcommentboxinline",
+          "title": "BigComments: Inline Default Comment Box"
+        },
+        {
+          "command": "bigcomments.bigcustomcommentbox",
+          "title": "BigComments: Big Custom Box"
+        }
+      ]
     }
-  ]
-}
-
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
