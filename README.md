@@ -77,12 +77,12 @@ Output (default):
 
 ### 🧾 Available Commands
 
-| Command ID                         | Description                                                  |
-| ---------------------------------- | ------------------------------------------------------------ |
-| `Bigcomments: Default Comment Box` | Box around selected text using `=`                           |
-| `Bigcomments: Custom Comment Box`  | Prompt for box symbol + optional decorator (e.g. `=*`, `-$`) |
-| `Bigcomments: Big Custom Box`      | Adds vertical padding to create more visual space            |
-| `Bigcomments: Inline Comment Box`  | Box the **current line** under cursor                        |
+| Command Title                      | Description                                                               |
+| ---------------------------------- | ------------------------------------------------------------------------- |
+| `BigComments: Default Comment Box` | Wraps selected text in a box using `=` characters                         |
+| `BigComments: Custom Comment Box`  | Prompts for a custom box symbol and optional decorator (e.g., `=*`, `-$`) |
+| `BigComments: Big Custom Box`      | Adds vertical padding to create a larger, more spaced-out comment box     |
+| `BigComments: Inline Comment Box`  | Boxes the current line under the cursor                                   |
 
 ---
 

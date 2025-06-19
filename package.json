@@ -16,13 +16,27 @@
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
-    "commands": [
-      {"command": "bigcomments.defaultcommentbox",
-    "title":"Default Comment Box"},
-    {"command": "bigcomments.customcommentbox", "title":"Custom Comment Box"},
-    {"command": "bigcomments.defaultcommentboxinline", "title":"Default Comment Box inline"},
-    {"command":"bigcomments.bigcustomcommentbox", "title":"Big Custom Comment Box"}
-    ]
+    "contributes": {
+  "commands": [
+    {
+      "command": "bigcomments.defaultcommentbox",
+      "title": "BigComments: Default Comment Box"
+    },
+    {
+      "command": "bigcomments.customcommentbox",
+      "title": "BigComments: Custom Comment Box"
+    },
+    {
+      "command": "bigcomments.defaultcommentboxinline",
+      "title": "BigComments: Inline Default Comment Box"
+    },
+    {
+      "command": "bigcomments.bigcustomcommentbox",
+      "title": "BigComments: Big Custom Box"
+    }
+  ]
+}
+
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
