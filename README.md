@@ -1,6 +1,6 @@
-# 🧱 bigcomments
+# 🧱 Big Comments
 
-`bigcomments` is a Visual Studio Code extension that helps you format **large, padded comment blocks** around selected text. It's great for making headers, section dividers, or attention-grabbing notes in your code.
+`Big Comments` is a Visual Studio Code extension that helps you format **large, padded comment blocks** around selected text. It's great for making headers, section dividers, or attention-grabbing notes in your code.
 I made this to solve my frustration with not being able to easily create clear and consistent "header comments."
 
 ---
@@ -22,7 +22,7 @@ I made this to solve my frustration with not being able to easily create clear a
 
 ## 🌐 Language Support
 
-`bigcomments` now supports comment formatting for a wide range of languages:
+`Big Comments` now supports comment formatting for a wide range of languages:
 
 | Language       | Comment Style  |
 | -------------- | -------------- |
@@ -145,7 +145,7 @@ Example:
 
 ---
 
-## 🎹 Keybinding (Optional)
+## 🎹 Keybinding (Recommended)
 
 You can add a custom keybinding for any `bigcomments` command by editing your VS Code keybindings:
 
@@ -175,7 +175,7 @@ You can replace `"cmd+shift+b"` with your own preferred key combination, and cha
 
 ## 📌 Extension Settings
 
-`bigcomments` supports customizable settings in your VS Code `settings.json`:
+`Big Comments` supports customizable settings in your VS Code `settings.json`:
 
 | Setting                     | Type     | Default | Description                                                                            |
 | --------------------------- | -------- | ------- | -------------------------------------------------------------------------------------- |
