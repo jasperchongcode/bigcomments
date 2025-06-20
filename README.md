@@ -15,6 +15,7 @@ I made this to solve my frustration with not being able to easily create clear a
 - ♻️ **Strips existing comment symbols** before re-boxing
 - 🧱 **"Big Box" mode**: adds extra spacing and padding
 - 📍 **Inline mode**: turn a single line into a full-width comment
+- 🧷 **Indent preservation**: box aligns with the indentation of the first selected line
 - ⚡ Fast, keyboard-first UX
 
 ---
@@ -209,6 +210,12 @@ This will use `#` as the default box symbol when wrapping comments, unless you o
 
 ## 📦 Release Notes
 
+### 0.1.3
+
+- 🧷 **Indent preservation**: boxed comments now align to the indent level of the first line in the selection
+- 🔧 Internal improvements to spacing and alignment logic
+- 🐛 Bug fixes with multicharacter comments
+
 ### 0.1.1
 
 - 🌐 **Multi-language comment support**: now supports single-line and block comment formats for 20+ languages
@@ -242,3 +249,4 @@ This will use `#` as the default box symbol when wrapping comments, unless you o
 - Toggle/unbox existing comment blocks
 - ASCII banners or emoji box styles
 - Global and per-language settings
+- Handling multiple comment types in the same language

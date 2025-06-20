@@ -60,6 +60,11 @@ const generateCommentText = (
   colourDecorator = ""
 ) => {
   var lines = text.split("\n");
+  // Get the leading whitespace on first line to preserve indent level
+  const leadingWhitespace = lines[0].slice(
+    0,
+    lines[0].length - lines[0].trimStart().length
+  );
 
   if (commentSymbol.length === 2) {
     // If a multiline comment, remove all instances of the comment symbol and strip lines
@@ -73,7 +78,7 @@ const generateCommentText = (
     // otherwise only remove comment symbols at the start
     lines = lines.map((line) =>
       line.trim().startsWith(commentSymbol[0])
-        ? line.slice(commentSymbol.length).trim()
+        ? line.trim().slice(commentSymbol[0].length).trim()
         : line.trim()
     );
   }
@@ -119,9 +124,11 @@ const generateCommentText = (
     (commentSymbol.length === 2 ? " ".repeat(commentSymbol[0].length) : "") +
       border +
       (commentSymbol.length === 2 ? commentSymbol[1] : ""),
-  ].join("\n");
+  ];
+  // preserve the previous indent level
+  box = box.map((line) => leadingWhitespace + line);
 
-  return box;
+  return box.join("\n");
 };
 
 // This method is called when your extension is activated
